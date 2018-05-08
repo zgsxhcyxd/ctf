@@ -1,0 +1,2 @@
+# ctf
+rivalry platform
