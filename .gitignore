@@ -1,0 +1,6 @@
+*.pyc
+files/shares
+files/box
+files/logging/log
+.idea/*.*
+.vscode/**
