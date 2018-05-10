@@ -11,7 +11,7 @@ class CaptchaPIL(RequestHandler):
         code, path = generate_captcha(ali_url)
         self.clear_cookie("captcha")
         self.set_cookie('captcha', code)
-        return 'https://apl-verification-code.oss-cn-shanghai.aliyuncs.com/' + path, 200
+        return 'https://jake.aliyuncs.com/' + path, 200
 
 
 def generate_captcha(url=None):

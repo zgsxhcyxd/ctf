@@ -7,6 +7,7 @@ mysql_configurations = {
     "dialect": "mysql",
 }
 
-ali_url = {
-    "url": 'oss-cn-shanghai.aliyuncs.com'
+memcached = {
+    "memcached": "127.0.0.1",
+    "memcached_port": 11211
 }

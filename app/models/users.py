@@ -1,9 +1,15 @@
-from models import Model
+# -*- coding: utf-8 -*-
+# @Time    : 2018/05/07 下午1:20
+# @Author  : Jake
+# @Desc    : 用户和团队数据库表设计
+# @File    : users.py
+
+from . import Model
 from uuid import uuid4
 from datetime import datetime
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy.types import DateTime, Integer, String, Boolean, Enum
-from models.enums import Area, TeamPermission
+from .enums import Area, TeamPermission
 
 class User(Model):
     __tablename__ = 'users'
@@ -32,7 +38,7 @@ class Team(Model):
     _name = Column(String(20), unique=True, nullable=False)
     company_name = Column(String(20))
     score = Column(Integer, default=0)
-    area = Column(Enum(Area), , default=Area.BJ)
+    area = Column(Enum(Area), default=Area.BJ)
     create_time = Column(DateTime, nullable=False, default=datetime.now())
     update_time = Column(DateTime, default=datetime.now(), onupdate=datetime.now())
 
@@ -40,6 +46,6 @@ class UserTeam(Model):
     __tablename__ = 'user_team'
     user_id = Column(Integer, ForeignKey('users.id'), primary_key=True)
     team_id = Column(Integer, ForeignKey('teams.id'), primary_key=True)
-    permissions = db.Column(db.Enum(TeamPermission), default=TeamPermission.MEMBER)
+    permissions = Column(Enum(TeamPermission), default=TeamPermission.MEMBER)
     create_time = Column(DateTime, nullable=False, default=datetime.now())
     update_time = Column(DateTime, default=datetime.now(), onupdate=datetime.now())

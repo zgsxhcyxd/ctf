@@ -43,7 +43,7 @@ class DatabaseConnection(object):
 
     def _mysql(self):
         logging.debug("Configured to use MySQL for a database")
-         __mysql = 'mysql://%s:%s@%s/%s' % (
+        __mysql = 'mysql://%s:%s@%s/%s' % (
             self.username, self.password, self.host, self.database
         )
         __pymysql = 'mysql+pymysql://%s:%s@%s/%s' % (
