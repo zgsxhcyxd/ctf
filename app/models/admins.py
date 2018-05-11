@@ -1,7 +1,8 @@
 from models import Model
-from sqlalchemy import Column
+from sqlalchemy import Column, ForeignKey
 from collections import namedtuple
 from sqlalchemy.types import DateTime, Integer, String, Boolean, BigInteger
+from sqlalchemy.orm import relationship
 
 class Role(Model):
     __tablename__ = 'role'
@@ -13,11 +14,14 @@ class Role(Model):
     status = db.Column(Boolean, default=True)
     create_time = Column(DateTime, nullable=False, default=db.func.now())
     update_time = Column(DateTime, default=db.func.now(), onupdate=db.func.now())
+    
+    admins = relationship("Admin", backref="role", lazy="dynamic")
 
 
 class Admin(Model):
     __tablename__ = 'admins'
     id = Column(Integer, primary_key=True, autoincrement=True)
+    role_id = Column(Integer, ForeignKey('role.id'), primary_key=True)
     username = Column(String(20), unique=True)
     password = Column(String(64), nullable=False)
     active = Column(Boolean, nullable=False, default=True)

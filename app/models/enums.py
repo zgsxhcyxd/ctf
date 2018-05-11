@@ -26,3 +26,7 @@ class Const(object):
     STATUS_DENIED = 401
     STATUS_FORBIDDEN = 403
     STATUS_OK = 200
+
+class TopicType(Enum):
+    MISE = "种类一"
+    PPC = "种类二"

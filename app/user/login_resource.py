@@ -17,7 +17,7 @@ class UserLoginHandler(BaseUserHandler):
         if user is None:
             return self.write({Const.RESULT_CODE: Const.STATUS_ERROR, Const.MESSAGE_KEY: "当前用户不存在!"})
 
-        if hash_user_password(username, password) != user.password:
+        if user.verify_password(password) != user.password:
             return self.write({Const.RESULT_CODE: Const.STATUS_ERROR, Const.MESSAGE_KEY: "您的用户名或者密码不正确!"})
         
         return self.write({Const.RESULT_CODE: Const.STATUS_OK , Const.MESSAGE_KEY: "验证成功"})
