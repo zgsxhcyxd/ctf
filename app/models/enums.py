@@ -30,3 +30,7 @@ class Const(object):
 class TopicType(Enum):
     MISE = "种类一"
     PPC = "种类二"
+
+class ModeEnum(Enum):
+    Universal = "通用模式"
+    Sports = "竞技模式"
